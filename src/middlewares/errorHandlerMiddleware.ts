@@ -1,9 +1,13 @@
 import { NextFunction, Request, Response } from "express";
-import { error } from "../protocols/protocols";
+import { Error } from "../protocols/protocols";
 
-const errorHandlerMiddleware = (err: error, req: Request, res: Response, next: NextFunction) => {
+const errorHandlerMiddleware = (err: Error, req: Request, res: Response, next: NextFunction) => {
 	if (err.type === "unprocessable" || err.type === "notClose") {
 		res.status(400).send(err.message);
+		return
+	}
+	if (err.type === "unauthorized") {
+		res.status(401).send(err.message);
 		return
 	}
 	if (err.type === "notFound") {
