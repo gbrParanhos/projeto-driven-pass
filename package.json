@@ -4,7 +4,7 @@
   "main": "src/index.ts",
   "scripts": {
     "build": "npx tsc",
-    "start": "npm run migration:run && npm run seed && node dist/index.js",
+    "start": "npm run migration:run && npm run seed && node dist/src/index.js",
     "dev": "ts-node-dev .",
     "migration:run": "npx prisma migrate deploy",
     "seed": "prisma db seed"
