@@ -17,9 +17,12 @@ export const createJwt = async ({ email, password }: UserLogin) => {
   const user = await userRepository.readUserByEmail(email);
   if (!user) throw notFoundError('usuário', 'e-mail');
   if (!bcrypt.compareSync(password, user.password)) throw unauthorizedError();
-  console.log(process.env.JWT_SECRET)
 
   const result = jwt.sign({ userId: user.id }, process.env.JWT_SECRET);
 
   return result
+}
+
+export const destroyUser = async (id: number) => {
+  return userRepository.deleteUser(id)
 }

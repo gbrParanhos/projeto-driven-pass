@@ -32,5 +32,6 @@ model Credential {
   user_id  Int
   user     User   @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "fk_user_id")
 
+  @@unique([title, user_id])
   @@map("credentials")
 }

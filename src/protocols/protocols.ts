@@ -1,4 +1,4 @@
-import { User } from "@prisma/client"
+import { Credential, User } from "@prisma/client"
 
 export type Error = {
   type: string,
@@ -10,3 +10,5 @@ export type UserRegister = Omit<User, 'id'> & {
 }
 
 export type UserLogin = Omit<User, 'id' | 'name'>
+
+export type CredentialRegister = Omit<Credential, 'id' | 'user_id'>

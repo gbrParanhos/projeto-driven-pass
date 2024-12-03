@@ -26,10 +26,19 @@ const createUser = (email: string, name: string, hashedPassword: string) => {
   })
 }
 
+const deleteUser = (id: number) => {
+  return prisma.user.delete({
+    where: {
+      id
+    }
+  })
+}
+
 const userRepository = {
   readUserByEmail,
   readUserById,
   createUser,
+  deleteUser
 }
 
 export default userRepository
