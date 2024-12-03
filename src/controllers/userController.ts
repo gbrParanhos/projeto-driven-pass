@@ -12,6 +12,6 @@ export const postSignIn = async (req: Request, res: Response) => {
 }
 
 export const deleteUser = async (req: Request, res: Response) => {
-  const token = await destroyUser(+res.locals.user.id);
-  res.status(200).send(token);
+  await destroyUser(+res.locals.user.id);
+  res.sendStatus(204);
 }

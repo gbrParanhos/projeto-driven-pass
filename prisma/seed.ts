@@ -1,7 +1,5 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "../src/database/connection"
 import bcrypt from "bcrypt"
-
-const prisma = new PrismaClient()
 
 async function main() {
   const password = "demo123"
